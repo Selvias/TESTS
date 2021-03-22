@@ -5,27 +5,32 @@ using namespace std;
 
 int main() {
 
-    int i = 0;
-    // char word[10];
-    char *words = NULL;
-    words = (char*)malloc(10*sizeof(char*));
+    unsigned int counter = 0;
 
-    ifstream input;
-    input.open("symbols.txt");
+    char **words = (char**)malloc(20*sizeof(char*));
 
-    ofstream output;
-    output.open("written.txt");
+    ifstream in;
+    in.open("symbols.txt");
 
-    while(!input.eof()) {
-        if (input.eof())
+    ofstream out;
+    out.open("written.txt");
+
+    while(in) {
+        cout << counter << "\n";
+        words[counter] = (char *) malloc(20 * sizeof(char));
+        if (in.eof())
             break;
-        input.getline(&words[i], 20,'\n');
-        output << &words[i] << "\n";
-        i++;
+        in.getline(words[counter], 15);
+        out << words[counter] << "\n";
+
+        counter ++;
     }
 
-    input.close();
-    output.close();
+    in.close();
+    out.close();
 
-    return 0;
+    cout << "REZ : " << words[0] << "\n";
+
+    free(words);
+
 }
