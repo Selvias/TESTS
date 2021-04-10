@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <fstream>
 
 using namespace std;
@@ -17,6 +18,13 @@ int main(int argc, char **argv) {
         output << j << "\n";
 
     output.close();
+
+    int a = atoi(argv[2]);
+    int b = atoi(argv[3]);
+
+    int c = a + b;
+
+    cout << "SUMMA (ATOI_FUNC_TEST) : " << c << "\n";
 
     return 0;
 }
